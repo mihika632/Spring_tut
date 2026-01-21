@@ -14,11 +14,11 @@ public class DemoApplication {
 
         var context=new AnnotationConfigApplicationContext(ProjectConfig.class);    
 
-        Person person=context.getBean(Person.class);
-        // Parrot parrot=context.getBean(Parrot.class);
-        // System.out.println("Person Name: " + person.getName());
-        // System.out.println("Parrot Name: " + parrot);
-        System.out.println("Person's Parrot Name: " + person.getParrot().getName());
+        var comment = new Comment();
+        comment.setAuthor("Alice");
+        comment.setText("This is a great post!");
 
+        var commentService = context.getBean(CommentService.class);
+        commentService.publishComment(comment);
     }
 }
