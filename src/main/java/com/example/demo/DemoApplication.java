@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import org.springframework.context.ApplicationContext;
+import java.util.function.Supplier;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,28 +12,13 @@ public class DemoApplication {
 
     public static void main(String[] args) {
 
-        // ApplicationContext context =
-        //         new ClassPathXmlApplicationContext("shapes-beans.xml");
+        var context=new AnnotationConfigApplicationContext(ProjectConfig.class);    
 
-        // Shape triangle = context.getBean("triangle", Shape.class);
-        // triangle.draw();
-
-        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        Parrot p = context.getBean(Parrot.class);
-        System.out.println(p);
-        System.out.println(p.getName());
-        
-        //  Parrot p1 = context.getBean("parrot1",Parrot.class);
-        // System.out.println(p1.getName());
-
-        // Parrot p2 = context.getBean("parrot2",Parrot.class);
-        // System.out.println(p2.getName());
-
-        // String s = context.getBean(String.class);
-        // System.out.println(s);
-
-        // Integer n = context.getBean(Integer.class);
-        // System.out.println(n);
+        Person person=context.getBean(Person.class);
+        // Parrot parrot=context.getBean(Parrot.class);
+        // System.out.println("Person Name: " + person.getName());
+        // System.out.println("Parrot Name: " + parrot);
+        System.out.println("Person's Parrot Name: " + person.getParrot().getName());
 
     }
 }
