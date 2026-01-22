@@ -1,16 +1,22 @@
 package com.example.demo;
 
 
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import java.util.logging.Logger;
+
+
 
 @Service
-@Lazy
 public class CommentService {
+   private Logger logger = Logger.getLogger(CommentService.class.getName());
 
-    public CommentService() {
-        System.out.println("CommentService instance created");
-    }
+   public void publishComment(Comment comment) {
+       // Logic to publish the comment
+       logger.info("Publishing comment by " + comment.getText());
+   }
+
+    
 
 }
