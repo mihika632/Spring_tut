@@ -1,22 +1,16 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
+
+@Service
+@Lazy
 public class CommentService {
-    private final CommentRepository commentRepository;
-    private final CommentNotificationProxy commentNotificationProxy;
 
-    public CommentService(CommentRepository commentRepository, CommentNotificationProxy commentNotificationProxy) {
-        this.commentRepository = commentRepository;
-        this.commentNotificationProxy = commentNotificationProxy;
+    public CommentService() {
+        System.out.println("CommentService instance created");
     }
 
-    public void publishComment(Comment comment) {
-        // Store the comment
-        commentRepository.storeComment(comment);
-        // Send notification about the new comment
-        commentNotificationProxy.sendComment(comment);
-    }
-    
 }
