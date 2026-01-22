@@ -12,9 +12,10 @@ import java.util.logging.Logger;
 public class CommentService {
    private Logger logger = Logger.getLogger(CommentService.class.getName());
 
-   public void publishComment(Comment comment) {
+   public String publishComment(Comment comment) {
        // Logic to publish the comment
-       logger.info("Publishing comment by " + comment.getText());
+       logger.info("Publishing comment by " + comment.getAuthor() + ": " + comment.getText());
+       return "SUCCESS";
    }
 
     
